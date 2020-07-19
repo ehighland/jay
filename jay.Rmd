@@ -1,0 +1,85 @@
+---
+title: "Jay's Affirmations"
+author: "By Emmy Highland"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libs, include=FALSE}
+library(ggplot2)
+library(plotly)
+```
+
+```{r mydata, include=FALSE}
+my.data <- data.frame(
+  year=seq.Date(as.Date('2013-09-03'),as.Date('2020-09-03'),'year'), 
+  quality=c(rep(100,8))
+)
+
+my.data.2 <- data.frame(
+  help=c('Yes','No'),
+  amount=c(100,0)
+)
+
+my.data.3 <- data.frame(
+  advice=c(rep('Amazing',100),rep('Outstanding',100),rep('Inspiring',100)),
+  x = c(1,2,3),
+  y = c(100,100,100)
+)
+```
+
+## About this Report
+
+In the pursuit of validating and affirming my beloved friend, Jay, I have compiled this document. Contained herein are various fun memories as well as fun data visualizations.
+
+## Personal Significance
+
+I met Jay through the student org Feminist Forum. I was in need of new friends and I decided to join a student org in the hopes of meeting people who shared my interests. Jay was so kind and nice to me from the start. I still remember when he invited me to a Halloween party he was hosting early in our friendship. I wasn't able to attend, but the invitation made me feel included.
+
+Jay has always been the sort of friend who's made me feel included. 
+
+A lot of our friendship has been long-distance, as Jay graduated and moved back to California while I was still in undergrad. Thankfully, we've continued to keep in touch. Even when we haven't talked a lot, I've felt confident that our friendship is strong. 
+
+Jay and I were reunited for our dear friend Jenny's wedding and being with the whole gang again felt like coming home. Not long after I visited Chicago to apartment hunt while Jay was staying with our other dear friend, BeeBee. I treasure the time we had to hang out, talk, and stroll about. Someday we will get those friendship tattoos! 
+
+All of this is to say, I really love Jay. I'm so glad he's my friend. Jay is funny, compassionate, dilligent, smart, warm, kind, and has such a positive energy. I admire his dedication to others and I admire the energy he has put into crafting a good life for himself, too. This is a necessary balance. 
+
+This personal testimonial aside, the data also support Jay being a high quality friend who has helped me a lot.
+
+## Quality Over Time
+
+Evidence shows that the first Feminist Forum meeting I attended took place on September 3rd, 2013. Although I had previously met Jay at the student organizion fair, data on this date were unavailable. For this reason, the date of the first meeting has been used as a measurement of friendship start time.
+
+The data clearly shows that, over several years of friendship, Jay has consistently been an outstanding friend. The highest possible value for "quality" is 100, which is the only value shown to be present in the data.
+
+```{r qualityplot}
+q <- ggplot(my.data,aes(x=year,y=quality)) + geom_area(fill='lightgreen') + geom_point() + ylim(0,100.01)
+ggplotly(q)
+```
+
+## Helpfulness
+
+When examining the times I have asked Jay for help, the data supports the conclusions that (A) Jay is ready and willing to help and (B) Jay has really good suggestions and advice.
+
+Below, we can see what the data says about point A.
+
+```{r helpplot}
+h <- ggplot(my.data.2,aes(x=help,y=amount)) + geom_point() + xlab('Willing to help?') + ylab('% of time')
+ggplotly(h)
+```
+
+And below, what the data says about point B. Jay's advice is always good, and the data shows that this good advice is amazing, inspiring, and outstanding in equal measure.
+
+```{r helpplottwo}
+h.2 <- ggplot(my.data.3,aes(x=advice,fill=advice)) + geom_bar() + xlab('Advice Attributes') + ylab('% of Attribute') + theme(legend.position="none") + scale_fill_brewer(palette = "Greens") 
+ggplotly(h.2)
+```
+
+## Conclusion
+
+As you can see, Jay is great and I love him!
+
+I hope you enjoy this, Jay! I made it just for you!
